@@ -1,0 +1,45 @@
+<div class="grid p-fluid">
+    <p-toast></p-toast>
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Proje Form
+                </h2>
+            </div>
+            <form #teacherProjectForm="ngForm">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <label for="">Adı</label>
+                        <input type="text" pInputText name="txtName" [(ngModel)]="data.title" #txtName="ngModel"
+                            aria-describedby="txtName-help" required>
+
+                        <small *ngIf="txtName.invalid && (txtName.dirty || txtName.touched)" id="txtName-help"
+                            class="p-error">Proje Adı Boş Geçilemez.</small>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="">Açıklama</label>
+                        <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="data.description" name="txtDescription"
+                            #txtDescription="ngModel" required aria-describedby="txtDescription-help"></textarea>
+
+                        <small *ngIf="txtDescription.invalid && (txtDescription.dirty || txtDescription.touched)"
+                            id="txtDescription-help" class="p-error">Proje Açıklaması Boş Geçilemez.</small>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="">Tarih</label>
+                        <p-calendar [dateFormat]="'dd-mm-yy'" name="txtDate" [(ngModel)]="date" #txtDate="ngModel"
+                            [hourFormat]="24" [showTime]="true" aria-describedby="txtDate-help" required></p-calendar>
+                        <small *ngIf="txtDate.invalid && (txtDate.dirty || txtDate.touched)" id="txtDate-help"
+                            class="p-error">Toplantı Tarihi Boş Geçilemez.</small>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="my-2" style="display: flex;justify-content: end;">
+                        <p-button label="Kaydet" icon="pi pi-save" [loading]="loading" styleClass="p-button-success"
+                            [disabled]="!teacherProjectForm.form.valid" (click)="save()"></p-button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>

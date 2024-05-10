@@ -1,0 +1,45 @@
+<div class="grid p-fluid">
+    <p-toast></p-toast>
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Departman Form
+                </h2>
+            </div>
+            <form #departmentForm="ngForm">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <label for="">Adı</label>
+                        <input type="text" pInputText name="txtName" [(ngModel)]="data.name" #txtName="ngModel" required
+                            aria-describedby="txtName-help">
+
+                        <small *ngIf="txtName.invalid && (txtName.dirty || txtName.touched)" id="txtName-help"
+                            class="p-error">Departman Adı Boş Geçilemez.</small>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="">Fakülte</label>
+                        <p-dropdown [options]="faculties" name="txtFaculty" [(ngModel)]="selectedFaculty"
+                            optionLabel="name" #txtFaculty="ngModel" [filter]="true" filterBy="name" [showClear]="true"
+                            aria-describedby="txtFaculty-help" required>
+                            <ng-template let-faculty pTemplate="item">
+                                <div class="flex align-items-center gap-2">
+                                    <div>{{ faculty.name }}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+
+                        <small *ngIf="txtFaculty.invalid && (txtFaculty.dirty || txtFaculty.touched)"
+                            id="txtFaculty-help" class="p-error">Fakülte Seçmelisiniz.</small>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="my-2" style="display: flex;justify-content: end;">
+                        <p-button label="Kaydet" icon="pi pi-save" styleClass="p-button-success"
+                            [disabled]="!departmentForm.form.valid" [loading]="loading" (click)="save()"></p-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

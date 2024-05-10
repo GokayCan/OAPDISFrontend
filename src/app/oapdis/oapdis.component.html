@@ -1,0 +1,144 @@
+<div class="grid">
+    <div class="col-12 lg:col-6 xl:col-6">
+        <div enterClass="flip" class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">En Çok Proje Yapan Akademisyen</span>
+                    <div class="text-900 font-medium text-xl">{{realDashboardData.mostProductiveTeacher.projectCount}}
+                        Proje</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-fw pi-user text-blue-500 text-xl"></i>
+                </div>
+            </div>
+            <!-- alt metin vermek için -->
+            <span class="text-green-500 font-medium">{{dashboardData?.mostProductiveTeacher?.firstName}}
+                {{dashboardData?.mostProductiveTeacher?.lastName}}</span><br>
+            <span class="text-500">{{dashboardData?.mostProductiveTeacher?.departmentName}}</span>
+        </div>
+    </div>
+
+    <div class="col-12 lg:col-6 xl:col-6">
+        <div enterClass="flip" class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">En Çok Proje Yapan Bölüm</span>
+                    <div class="text-900 font-medium text-xl">
+                        {{realDashboardData.mostProductiveDepartment.projectCount}} Proje</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-fw pi-star text-blue-500 text-xl"></i>
+                </div>
+            </div>
+            <!-- alt metin vermek için -->
+            <span class="text-green-500 font-medium">{{dashboardData?.mostProductiveDepartment?.name}}</span><br>
+            <span class="text-500">{{dashboardData?.mostProductiveDepartment?.facultyName}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col-12 lg:col-6 xl:col-6">
+        <div enterClass="flip" class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Toplam Akademisyen Sayısı</span>
+                    <div class="text-900 font-medium text-xl">{{realDashboardData.totalUsers}} Akademisyen</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-fw pi-users text-blue-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 lg:col-6 xl:col-6">
+        <div enterClass="flip" class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Toplam Proje Sayısı</span>
+                    <div class="text-900 font-medium text-xl">{{realDashboardData.totalProjects}} Proje</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-fw pi-sitemap text-blue-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col-12 lg:col-6 xl:col-6">
+        <div enterClass="flip" class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Toplam Toplantı Sayısı</span>
+                    <div class="text-900 font-medium text-xl">{{realDashboardData.totalMeetings}} Toplantı</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-fw pi-calendar text-blue-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 lg:col-6 xl:col-6">
+        <div enterClass="flip" class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Toplam Makale Sayısı</span>
+                    <div class="text-900 font-medium text-xl">{{realDashboardData.totalArticles}} Makale</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-fw pi-file text-blue-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="grid mt-3">
+    <div class="col-4">
+        <h3 class="text-center">Son 1 Yılın Proje Sayıları</h3>
+        <div class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="p-grid p-nogutter">
+                <div class="p-col-12">
+                    <p-chart type="bar" [options]="basicProjectOptions" [data]="chartDataProjectCounts"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <h3 class="text-center">Son 1 Yılın Toplantı Sayıları</h3>
+        <div class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="p-grid p-nogutter">
+                <div class="p-col-12">
+                    <p-chart type="bar" [options]="basicMeetingOptions" [data]="chartDataMeetingCounts"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <h3 class="text-center">Son 1 Makale Proje Sayıları</h3>
+        <div class="card mb-0 shadow-2 border-round animation-duration-1000 animation-ease-out">
+            <div class="p-grid p-nogutter">
+                <div class="p-col-12">
+                    <p-chart type="bar" [options]="basicArticleOptions" [data]="chartDataArticleCounts"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<full-calendar id="calendar" [options]="calendarOptions"></full-calendar>
+<!-- <full-calendar id="calendar" [events]="events" [options]="calendarOptions"></full-calendar> -->

@@ -1,0 +1,219 @@
+<p-toast></p-toast>
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Akademisyen Bilgileri</h2>
+    </div>
+    <div class="card-body">
+        <div class="row grid relative">
+            <div class="col-6 teacher-info-photo">
+                <img [src]="'assets/images/' + user.imageUrl" alt="Profil Fotoğrafı"
+                    class="rounded-circle max-w-full">
+            </div>
+            <div class="col-6 align-self-center teacher-info text-center">
+                <h4 class="card-title">{{teacher.title}}{{teacher.firstName}} {{teacher.lastName}}</h4>
+                <p class="card-text">{{teacher.task}}</p>
+                <h6>E-posta Adresi</h6>
+                <p class="card-text">{{teacher.email}}</p>
+                <h6>Telefon Numarası</h6>
+                <p class="card-text">{{teacher.phoneNumber}}</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+<div class="grid p-fluid">
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Makale Listesi
+                </h2>
+            </div>
+            <div class="card-body">
+                <p-table #dt1 [value]="teacherArticles" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                    [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" responsiveLayout="stack"
+                    [globalFilterFields]="['firstName', 'lastName', 'email','title','task']">
+                    <ng-template pTemplate="caption">
+                        <div class="flex">
+                            <button pButton label="Temizle" class="p-button-outlined" icon="pi pi-filter-slash"
+                                (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text"
+                                    (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                                    placeholder="Arama Yapın" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="firstName" style="min-width:5rem">
+                                <p-sortIcon field="firstName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Ad
+                                    <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="lastName" style="min-width:5rem">
+                                <p-sortIcon field="lastName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Soyad
+                                    <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="title" style="min-width:5rem">
+                                <p-sortIcon field="title"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Makale Başlığı
+                                    <p-columnFilter type="text" field="title" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                            <td>{{data.firstName}}</td>
+                            <td>{{data.lastName}}</td>
+                            <td>{{data.title}}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">Kayıt Bulunamadı.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Proje Listesi
+                </h2>
+            </div>
+            <div class="card-body">
+                <p-table #dt1 [value]="teacherProjects" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                    [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" responsiveLayout="stack"
+                    [globalFilterFields]="['firstName', 'lastName', 'email','title','task']">
+                    <ng-template pTemplate="caption">
+                        <div class="flex">
+                            <button pButton label="Temizle" class="p-button-outlined" icon="pi pi-filter-slash"
+                                (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text"
+                                    (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                                    placeholder="Arama Yapın" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="firstName" style="min-width:5rem">
+                                <p-sortIcon field="firstName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Ad
+                                    <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="lastName" style="min-width:5rem">
+                                <p-sortIcon field="lastName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Soyad
+                                    <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="title" style="min-width:5rem">
+                                <p-sortIcon field="title"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Proje Başlığı
+                                    <p-columnFilter type="text" field="title" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                            <td>{{data.firstName}}</td>
+                            <td>{{data.lastName}}</td>
+                            <td>{{data.title}}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">Kayıt Bulunamadı.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Toplantı Listesi
+                </h2>
+            </div>
+            <div class="card-body">
+                <p-table #dt1 [value]="teacherMeetings" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                    [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" responsiveLayout="stack"
+                    [globalFilterFields]="['firstName', 'lastName', 'email','title','task']">
+                    <ng-template pTemplate="caption">
+                        <div class="flex">
+                            <button pButton label="Temizle" class="p-button-outlined" icon="pi pi-filter-slash"
+                                (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text"
+                                    (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                                    placeholder="Arama Yapın" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="firstName" style="min-width:5rem">
+                                <p-sortIcon field="firstName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Ad
+                                    <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="lastName" style="min-width:5rem">
+                                <p-sortIcon field="lastName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Soyad
+                                    <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="title" style="min-width:5rem">
+                                <p-sortIcon field="title"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Toplantı Başlığı
+                                    <p-columnFilter type="text" field="title" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                            <td>{{data.firstName}}</td>
+                            <td>{{data.lastName}}</td>
+                            <td>{{data.title}}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">Kayıt Bulunamadı.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+    </div>
+</div>

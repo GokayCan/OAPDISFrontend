@@ -1,0 +1,92 @@
+<div class="grid p-fluid">
+    <p-toast></p-toast>
+    <p-confirmDialog key="confirm1" [style]="{width: '50vw'}"></p-confirmDialog>
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Makele Listesi
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="my-2" style="display: flex;justify-content: start;">
+                    <p-button label="Ekle" icon="pi pi-plus" styleClass="p-button-primary" routerLink="form"></p-button>
+                </div>
+                <p-table #dt1 [value]="data" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                    [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" responsiveLayout="stack"
+                    [globalFilterFields]="['firstName', 'lastName', 'department','title']">
+                    <ng-template pTemplate="caption">
+                        <div class="flex">
+                            <button pButton label="Temizle" class="p-button-outlined" icon="pi pi-filter-slash"
+                                (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text"
+                                    (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                                    placeholder="Arama Yapın" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="firstName" style="min-width:5rem">
+                                <p-sortIcon field="firstName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Ad
+                                    <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="lastName" style="min-width:5rem">
+                                <p-sortIcon field="lastName"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Soyad
+                                    <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="department" style="min-width:5rem">
+                                <p-sortIcon field="department"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Bölüm
+                                    <p-columnFilter type="text" field="department" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th pSortableColumn="title" style="min-width:5rem">
+                                <p-sortIcon field="title"></p-sortIcon>
+                                <div class="flex align-items-center">
+                                    Makele Adı
+                                    <p-columnFilter type="text" field="title" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+
+                            <th style="min-width:5rem">
+
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                            <td>{{data.firstName}}</td>
+                            <td>{{data.lastName}}</td>
+                            <td>{{data.department}}</td>
+                            <td>{{data.title}}</td>
+                            <td>
+                                <div class="flex">
+                                    <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-warning mr-2"
+                                        routerLink="form/{{data.id}}"></button>
+                                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="delete(data)"></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">Akademisyen Bulunamadı.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

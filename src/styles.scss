@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+
+$gutter: 1rem; //for primeflex grid system
+@import "assets/layout/styles/layout/layout.scss";
+
+/* PrimeNG */
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+
+/* Demos */
+@import "assets/demo/styles/flags/flags.css";
+@import "assets/demo/styles/badges.scss";
+@import "assets/demo/styles/code.scss";
+
+
+
+@media (max-width: 768px) {
+    .teacher-info {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .teacher-info-photo{
+        width: 100%;
+    }
+}
+
+
+
+
+input[type="text"].ng-valid[required],
+input[type="text"].ng-valid.required,
+input[type="email"].ng-valid[required],
+input[type="email"].ng-valid.required,
+input[type="password"].ng-valid[required],
+input[type="password"].ng-valid.required,
+textarea.ng-valid[required],
+textarea.ng-valid.required {
+    border-left: 7px solid #42a948;
+    /* green */
+}
+
+input[type="text"].ng-invalid:not(form),
+input[type="email"].ng-invalid:not(form),
+input[type="password"].ng-invalid:not(form),
+textarea.ng-invalid:not(form) {
+    border-left: 7px solid #a94442;
+    /* red */
+}
+
+p-dropdown.ng-invalid > .p-dropdown {
+    border-left: 7px solid #a94442;
+}
+
+p-dropdown.ng-valid[required] > .p-dropdown,
+p-dropdown.ng-valid.required > .p-dropdown {
+    border-left: 7px solid #42a948;
+}
+
+p-password.ng-invalid > .p-inputtext {
+    border-left: 7px solid #a94442;
+}
+
+p-password.ng-valid[required] > .p-inputtext,
+p-password.ng-valid.required > .p-inputtext {
+    border-left: 7px solid #42a948;
+}
+
+p-multiselect.ng-invalid .p-multiselect {
+    border-left: 7px solid #a94442 !important;
+}
+
+p-multiselect.ng-valid[required] .p-multiselect,
+p-multiselect.ng-valid.required .p-multiselect {
+    border-left: 7px solid #42a948;
+}
+
+p-calendar.ng-invalid .p-calendar input[type="text"] {
+    border-left: 7px solid #a94442 !important;
+}
+
+p-calendar.ng-valid[required] .p-calendar input[type="text"],
+p-calendar.ng-valid.required .p-calendar input[type="text"] {
+    border-left: 7px solid #42a948;
+}
+
+.p-inputgroup input[type="url"].ng-invalid {
+    border-left: 7px solid #a94442;
+}
+
+.p-inputgroup > input[type="url"].ng-valid[required],
+.p-inputgroup > input[type="url"].ng-valid.required {
+    border-left: 7px solid #42a948;
+}
+
+p-inputmask.ng-invalid > .p-inputmask {
+    border-left: 7px solid #a94442;
+}
+
+p-inputmask.ng-valid[required] > .p-inputmask,
+p-inputmask.ng-valid.required > .p-inputmask {
+    border-left: 7px solid #42a948;
+}
+
+p-password.ng-invalid .p-password input {
+    border-left: 7px solid #a94442;
+}
+
+p-password.ng-valid[required] .p-password input,
+p-password.ng-valid.required .p-password input {
+    border-left: 7px solid #42a948;
+}
+
+
+.p-menuitem-link
+{
+    background-color: transparent !important;
+}

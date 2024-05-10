@@ -1,0 +1,29 @@
+<div class="grid p-fluid">
+    <p-toast></p-toast>
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Fakülte Form
+                </h2>
+            </div>
+            <form #facultyForm="ngForm">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <label for="">Adı</label>
+                        <input type="text" pInputText name="txtName" [(ngModel)]="data.name" #txtName="ngModel"
+                            aria-describedby="txtName-help" required>
+                    </div>
+                    <small *ngIf="txtName.invalid && (txtName.dirty || txtName.touched)" id="txtName-help"
+                        class="p-error">Fakülte Adı Boş Geçilemez.</small>
+                </div>
+                <div class="card-footer">
+                    <div class="my-2" style="display: flex;justify-content: end;">
+                        <p-button label="Kaydet" icon="pi pi-save" styleClass="p-button-success"
+                            [disabled]="!facultyForm.form.valid" [loading]="loading" (click)="save()"></p-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
